@@ -44,6 +44,7 @@ public class MainActivity extends ActionBarActivity {
 
     public void one (View v) {
         textView.append("1");
+
     }
 
     public void two (View v) {
