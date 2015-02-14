@@ -11,31 +11,40 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true">
 
-        <FrameLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:layout_weight="2">
+            android:layout_weight="2"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1+1="
-                android:id="@+id/textView"
-                android:layout_gravity="left|top"
-                android:textSize="30dp"/>
+                android:text="0"
+                android:id="@+id/textViewA"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="60dp"/>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2"
-                android:id="@+id/textView2"
-                android:layout_gravity="center_vertical|right"
+                android:text="+"
+                android:id="@+id/textViewK"
                 android:gravity="center_vertical|right"
-                android:textSize="40dp"/>
+                android:textSize="60dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
 
-        </FrameLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:id="@+id/textViewB"
+                android:textSize="60dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -82,7 +91,7 @@
                 android:layout_weight="1"
                 android:textSize="50dp"
                 android:layout_margin="3dp"
-                android:onClick="w"/>
+                android:onClick="div"/>
 
         </LinearLayout>
 
@@ -130,7 +139,7 @@
                 android:layout_weight="1"
                 android:textSize="50dp"
                 android:layout_margin="3dp"
-                android:onClick="k"/>
+                android:onClick="multi"/>
 
         </LinearLayout>
 
@@ -178,7 +187,7 @@
                 android:layout_weight="1"
                 android:textSize="50dp"
                 android:layout_margin="3dp"
-                android:onClick="m"/>
+                android:onClick="sub"/>
 
         </LinearLayout>
 
@@ -187,6 +196,15 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="C"
+                android:id="@+id/buttonc"
+                android:layout_weight="1"
+                android:textSize="50dp"
+                android:onClick="clear"/>
 
             <Button
                 android:layout_width="0dp"
@@ -203,10 +221,10 @@
                 android:layout_height="match_parent"
                 android:text="="
                 android:id="@+id/buttoni"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:textSize="50dp"
                 android:layout_margin="3dp"
-                android:onClick="i"/>
+                android:onClick="equal"/>
 
             <Button
                 android:layout_width="0dp"
@@ -216,7 +234,7 @@
                 android:layout_weight="1"
                 android:textSize="50dp"
                 android:layout_margin="3dp"
-                android:onClick="p"/>
+                android:onClick="plus"/>
 
         </LinearLayout>
 

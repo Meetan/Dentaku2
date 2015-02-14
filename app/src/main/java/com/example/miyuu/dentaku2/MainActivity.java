@@ -5,103 +5,149 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
 
-    TextView textView;
-    TextView textView2;
-    Button button1;
-    Button button2;
-    Button button3;
-    Button button4;
-    Button button5;
-    Button button6;
-    Button button7;
-    Button button8;
-    Button button9;
-    Button button0;
-    Button buttonp;
-    Button buttonm;
-    Button buttonw;
-    Button buttoni;
+    final int NONE = -1;
+    final int PLUS = 0;
+    final int SUB = 1;
+    final int DIV = 2;
+    final int MULTI = 3;
 
-    int number;
+    TextView textViewA;
+    TextView textViewB;
+    TextView textViewK;
 
-
+    int numberA = 0;
+    int numberB = 0;
+    int kigo = NONE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //レイアウトがわらボタンのオンクリック作ったときは、findViewByidしなくておｋ、レイアウト側から設定するからとってこなくてもいい。
+        //レイアウト側からボタンのオンクリック作ったときは、findViewByidしなくておｋ、レイアウト側から設定するからとってこなくてもいい。
 
-        textView = (TextView)findViewById(R.id.textView);
-        textView = (TextView)findViewById(R.id.textView2);
+        textViewA = (TextView)findViewById(R.id.textViewA);
+        textViewB = (TextView)findViewById(R.id.textViewB);
+        textViewK = (TextView) findViewById(R.id.textViewK);
+
+        textViewA.setText(String.valueOf(0));
+        textViewB.setText(" ");
+        textViewK.setText(" ");
+
+    }
+
+    public void numInput(int n ) {
+        if (kigo == NONE) {
+            numberA = numberA * 10 + n;
+            textViewA.setText(String.valueOf(numberA));
+        } else {
+            numberB = numberB * 10 + n;
+            textViewB.setText(String.valueOf(numberB));
+        }
+
+
     }
 
     public void one (View v) {
-        textView.append("1");
-        //
+        numInput(1);
     }
 
     public void two (View v) {
-        textView.append("2");
+        numInput(2);
     }
 
     public void three (View v) {
-        textView.append("3");
+        numInput(3);
     }
 
     public void four (View v) {
-        textView.append("4");
+        numInput(4);
     }
 
     public void five (View v) {
-        textView.append("5");
+        numInput(5);
     }
 
     public void six (View v) {
-        textView.append("6");
+        numInput(6);
     }
 
     public void seven (View v) {
-        textView.append("7");
+        numInput(7);
     }
 
     public void eight (View v) {
-        textView.append("8");
+        numInput(8);
     }
 
     public void nine (View v) {
-        textView.append("9");
+        numInput(9);
     }
 
     public void zero (View v) {
-        textView.append("0");
+        numInput(0);
     }
 
-    public void p (View v) {
-        textView.append("+");
+    public void plus (View v) {
+        kigo = PLUS;
+        textViewK.setText("+");
+
     }
 
-    public void m (View v) {
-        textView.append("-");
+    public void sub(View v) {
+        kigo = SUB;
+        textViewK.setText("-");
     }
 
-    public void k (View v) {
-        textView.append("×");
+    public void multi(View v) {
+        kigo = MULTI;
+        textViewK.setText("×");
     }
-    public void w (View v) {
-        textView.append("÷");
-    }
-
-    public void i (View v){
-        textView.append("=");
+    public void div(View v) {
+        kigo = DIV;
+        textViewK.setText("÷");
     }
 
+    public void equal (View v){
+        switch (kigo){
+            case PLUS:
+                numberA = numberA + numberB;
+                break;
+            case  SUB:
+                numberA = numberA - numberB;
+                break;
+            case DIV:
+                numberA = numberA / numberB;
+                break;
+            case MULTI:
+                numberA = numberA * numberB;
+                break;
+            default:
+                break;
+        }
+
+        numberB = 0;
+        kigo = NONE;
+
+        textViewA.setText(String.valueOf(numberA));
+        textViewB.setText(" ");
+        textViewK.setText(" ");
+
+    }
+
+    public void clear (View v){
+        numberA = 0;
+        numberB = 0;
+        kigo = NONE;
+
+        textViewA.setText(String.valueOf(0));
+        textViewB.setText(" ");
+        textViewK.setText(" ");
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
